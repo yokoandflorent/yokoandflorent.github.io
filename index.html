@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja-JP">
+<html lang="ja-JP" data-lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,10 +17,16 @@
         font-family: Georgia, serif;
       }
 
+      /* Language switching */
+      [data-lang="en"] .ja { display: none; }
+      [data-lang="ja"] .en { display: none; }
+
       nav {
         background: #fff;
         border-bottom: 1px solid #ddd;
         padding: 12px 20px;
+        display: flex;
+        align-items: center;
       }
 
       nav ol {
@@ -31,6 +37,7 @@
         flex-wrap: wrap;
         gap: 24px;
         justify-content: center;
+        flex: 1;
       }
 
       nav ol li a {
@@ -41,6 +48,34 @@
 
       nav ol li a:hover {
         color: #000;
+      }
+
+      .lang-switcher {
+        display: flex;
+        gap: 4px;
+        flex-shrink: 0;
+      }
+
+      .lang-btn {
+        background: none;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 3px 8px;
+        font-size: 12px;
+        cursor: pointer;
+        color: #555;
+        font-family: Georgia, serif;
+      }
+
+      .lang-btn.active {
+        background: #333;
+        border-color: #333;
+        color: #fff;
+      }
+
+      .lang-btn:hover:not(.active) {
+        border-color: #999;
+        color: #333;
       }
 
       .site-header {
@@ -211,14 +246,39 @@
   <body>
     <nav>
       <ol>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Our Work / Services</a></li>
-        <li><a href="#">Testimonials</a></li>
-        <li><a href="#">Media &amp; Press</a></li>
-        <li><a href="#">Newsletter</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#">
+          <span class="en">Home</span>
+          <span class="ja">ホーム</span>
+        </a></li>
+        <li><a href="#about-us">
+          <span class="en">About Us</span>
+          <span class="ja">私たちについて</span>
+        </a></li>
+        <li><a href="#services">
+          <span class="en">Our Work / Services</span>
+          <span class="ja">サービス・活動</span>
+        </a></li>
+        <li><a href="#">
+          <span class="en">Testimonials</span>
+          <span class="ja">お客様の声</span>
+        </a></li>
+        <li><a href="#">
+          <span class="en">Media &amp; Press</span>
+          <span class="ja">メディア掲載</span>
+        </a></li>
+        <li><a href="#">
+          <span class="en">Newsletter</span>
+          <span class="ja">ニュースレター</span>
+        </a></li>
+        <li><a href="#contact">
+          <span class="en">Contact</span>
+          <span class="ja">お問い合わせ</span>
+        </a></li>
       </ol>
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="ja">日本語</button>
+        <button class="lang-btn" data-lang="en">English</button>
+      </div>
     </nav>
 
     <header class="site-header">
@@ -228,7 +288,8 @@
       </div>
       <div class="header-text">
         <h1>Yoko &amp; Florent Roques</h1>
-        <p>Connecting Hearts Across Cultures</p>
+        <p class="en">Connecting Hearts Across Cultures</p>
+        <p class="ja">文化を越えて、心をつなぐ</p>
       </div>
       <div>
         <img
@@ -241,41 +302,71 @@
     </header>
 
     <main role="main" style="max-width: 800px; margin: 0 auto; padding: 20px">
-      <h1>東洋と西洋が出会うとき、人生は動き出す。</h1>
-      <p>East meets West — Awakening you can live.</p>
+      <h1>
+        <span class="ja">東洋と西洋が出会うとき、人生は動き出す。</span>
+        <span class="en">When East Meets West, Life Begins to Move.</span>
+      </h1>
       <img src="images/yoko-and-florent-walking.jpg" alt="" />
 
-      <h2>ふたりの出会い、ひとつのビジョン</h2>
+      <h2>
+        <span class="ja">ふたりの出会い、ひとつのビジョン</span>
+        <span class="en">Two People, One Vision</span>
+      </h2>
       <img src="images/yoko-and-florent-paris.jpg" alt="" />
 
-      <h2>気づきから、内なる調和へ</h2>
+      <h2>
+        <span class="ja">気づきから、内なる調和へ</span>
+        <span class="en">From Awareness to Inner Harmony</span>
+      </h2>
       <img src="images/florent-meditating.jpg" alt="" />
 
-      <h2>国境を越えてつながるコミュニティ</h2>
+      <h2>
+        <span class="ja">国境を越えてつながるコミュニティ</span>
+        <span class="en">A Community Connected Beyond Borders</span>
+      </h2>
       <img src="images/kimono-international-group.jpg" alt="" />
 
-      <h2>体験を通して学ぶ、もう一つの世界</h2>
+      <h2>
+        <span class="ja">体験を通して学ぶ、もう一つの世界</span>
+        <span class="en">Another World Learned Through Experience</span>
+      </h2>
       <img src="images/outdoor-group.jpg" alt="" />
 
-      <h2>世界のどこからでも、つながれる場所</h2>
+      <h2>
+        <span class="ja">世界のどこからでも、つながれる場所</span>
+        <span class="en">A Place to Connect from Anywhere in the World</span>
+      </h2>
       <img src="images/zoom-community.jpg" alt="" />
 
-      <p>
+      <p class="ja">
         東洋の精神性と西洋の合理性。
         教育と瞑想、感性と論理という異なる背景を持つ二人は、それぞれの経験を生かしながら活動しています。
         英語と日本語を通じた国際コミュニティの運営や、内面の気づきを現実の人生の変化へと結びつけるリトリートを行い、多くの人が新しい一歩を踏み出すサポートをしています。
         目指しているのは、特別な体験としての「覚醒」ではなく、日常の中で自然に生きられる変化。
         文化や年齢、国籍を越え、人が本来の自分として生きるための場を創り続けています。
       </p>
+      <p class="en">
+        Eastern spirituality and Western rationality. Coming from different backgrounds —
+        education and meditation, sensitivity and logic — we draw on our individual experiences
+        in everything we do. We run an international community in both English and Japanese,
+        and offer retreats that connect inner awareness with real-life transformation, supporting
+        many people as they take their next step. What we aim for is not "awakening" as a
+        special, one-time experience, but a natural and lasting change woven into everyday life.
+        We continue to create spaces where people — across cultures, ages, and nationalities —
+        can live as their true selves.
+      </p>
     </main>
 
     <section class="about-us" id="about-us">
-      <h2>About Us</h2>
+      <h2>
+        <span class="en">About Us</span>
+        <span class="ja">私たちについて</span>
+      </h2>
 
       <h3>Yoko</h3>
       <div class="profile-card">
         <img src="images/yoko-circle-280x280.png" alt="Yoko" />
-        <p>
+        <p class="ja">
           洋子は38年以上にわたり英語教育に携わってきた教育者です。
           長年にわたり英語指導を行うと同時に、国際交流やコミュニティづくりを通して、多くの人が言語との出会いや人とのつながりによって人生の可能性を広げるサポートを続けてきました。
           指導の中で大切にしているのは、単に言葉を学ぶことではなく、「人が自分らしく生きるためのコミュニケーション」です。英語をきっかけに視野を広げ、自分自身の人生に新しい選択肢を見つけていくプロセスを支えています。
@@ -284,35 +375,108 @@
           目指しているのは、特別な体験としての「覚醒」ではなく、日常の中で無理なく続いていく本質的な変化です。文化や年齢、国籍を越えて、一人ひとりが本来の自分らしく人生を歩んでいける場づくりを大切にしています。
           言葉とコミュニケーション、そして内面への気づきを通して、人が本来の自分と再びつながり、人生に現実的な変化を生み出していくことをサポートしています。
         </p>
+        <p class="en">
+          Yoko is an educator with over 38 years of experience in English education. Throughout
+          her teaching career, she has supported people in expanding the possibilities of their
+          lives through international exchange and community building, showing how language and
+          human connection can open new horizons.
+          At the heart of her teaching is not simply the mastery of language, but
+          "communication that allows each person to live authentically." She guides students as
+          they broaden their perspectives through English and discover new possibilities in their
+          own lives.
+          She integrates NLP (Neuro-Linguistic Programming), coaching theory, Anthony Robbins'
+          methods, and palm reading from a statistical perspective, offering personalized support
+          tailored to each individual's character and stage of life. Her approach is grounded in
+          decades of real-world experience and a warm, companionable style.
+          Weaving together Eastern spirituality and Western rationality, education and meditation,
+          sensitivity and logic, she now runs a global community in English and Japanese, and
+          offers retreats and programs that connect inner awareness with concrete, lasting change.
+          Her aim is not "awakening" as a grand, one-time event, but natural and meaningful change
+          that continues in everyday life. She is dedicated to creating spaces where people of all
+          cultures, ages, and nationalities can walk their path as their true selves.
+        </p>
       </div>
 
       <h3>Florent</h3>
       <div class="profile-card">
         <img src="images/florent-circle-280x280.png" alt="Florent" />
-        <p>
+        <p class="ja">
           フロランは、インドにてヨガ、マントラ、瞑想、そして人生の智慧を学び、インドおよびパリで僧侶として活動してきました。精神的探求と実践を通して、人が内面と深く向き合い、本来の自分に気づいていくプロセスを長年サポートしてきました。
           現在はシステムエンジニアとしても活動し、障害を持つ方々がより簡単に情報へアクセスできるようにするプログラム開発など、テクノロジーを通じた社会貢献にも取り組んでいます。
           精神性とテクノロジーという異なる分野を融合させながら、ライフコーチとして個人の成長や人生の転換をサポート。近年は日本においてもサードアイ活性ワークショップやリトリート、スピリチュアルプログラムを開始し、国境を越えた活動へと広がりを見せています。
           内面の気づきを現実の人生の変化へとつなげることを大切にし、多文化的な視点から人々が自分自身の可能性を開いていくサポートを行っています。
         </p>
+        <p class="en">
+          Florent studied yoga, mantra, meditation, and the wisdom of life in India, and has
+          practiced as a monk in both India and Paris. Through spiritual inquiry and practice,
+          he has long supported people in deeply connecting with their inner world and awakening
+          to their true selves.
+          He also works as a systems engineer, contributing to society through technology —
+          including developing programs that help people with disabilities access information
+          more easily.
+          Bridging spirituality and technology, he serves as a life coach who supports personal
+          growth and life transformation. In recent years, he has expanded his work to Japan,
+          offering Third Eye Activation workshops, retreats, and spiritual programs that
+          transcend national boundaries.
+          He places great importance on translating inner awareness into real, tangible life
+          change, supporting people from a multicultural perspective as they open to their
+          own potential.
+        </p>
       </div>
     </section>
 
     <section class="our-services" id="services">
-      <h2>Our Services</h2>
+      <h2>
+        <span class="en">Our Services</span>
+        <span class="ja">サービス</span>
+      </h2>
       <ul>
-        <li>Life Transformation Programs</li>
-        <li>International Retreats</li>
-        <li>Communication &amp; Language Coaching</li>
-        <li>Spiritual Sessions</li>
+        <li>
+          <span class="en">Life Transformation Programs</span>
+          <span class="ja">人生変容プログラム</span>
+        </li>
+        <li>
+          <span class="en">International Retreats</span>
+          <span class="ja">国際リトリート</span>
+        </li>
+        <li>
+          <span class="en">Communication &amp; Language Coaching</span>
+          <span class="ja">コミュニケーション＆言語コーチング</span>
+        </li>
+        <li>
+          <span class="en">Spiritual Sessions</span>
+          <span class="ja">スピリチュアルセッション</span>
+        </li>
       </ul>
     </section>
 
     <section class="contact-us" id="contact">
-      <h2>Contact Us</h2>
+      <h2>
+        <span class="en">Contact Us</span>
+        <span class="ja">お問い合わせ</span>
+      </h2>
       <div class="contact-row">
         <a href="mailto:yokoandflorent@gmail.com">yokoandflorent@gmail.com</a>
       </div>
     </section>
+
+    <script>
+      function setLang(lang) {
+        document.documentElement.setAttribute('data-lang', lang);
+        document.documentElement.lang = lang === 'en' ? 'en' : 'ja-JP';
+        localStorage.setItem('lang', lang);
+        document.querySelectorAll('.lang-btn').forEach(function (btn) {
+          btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+      }
+
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          setLang(btn.dataset.lang);
+        });
+      });
+
+      setLang(localStorage.getItem('lang') || 'ja');
+    </script>
   </body>
 </html>
