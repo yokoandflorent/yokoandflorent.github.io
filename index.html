@@ -82,6 +82,10 @@
         color: #333;
       }
 
+      .nav-toggle {
+        display: none;
+      }
+
       .site-header {
         display: flex;
         align-items: center;
@@ -244,18 +248,107 @@
         text-decoration: underline;
         font-size: 1rem;
       }
+
+      /* ===  Mobile (≤ 640px) === */
+      @media (max-width: 640px) {
+        nav {
+          flex-wrap: wrap;
+          padding: 10px 16px;
+        }
+
+        .nav-toggle {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 5px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 4px;
+          order: 0;
+        }
+
+        .nav-toggle span {
+          display: block;
+          width: 22px;
+          height: 2px;
+          background: #333;
+          border-radius: 1px;
+        }
+
+        .lang-switcher {
+          order: 1;
+          margin-left: auto;
+        }
+
+        nav ol {
+          display: none;
+          flex-direction: column;
+          gap: 0;
+          flex: 0 0 100%;
+          order: 2;
+          border-top: 1px solid #eee;
+          padding-top: 4px;
+          margin-top: 8px;
+        }
+
+        nav.nav-open ol {
+          display: flex;
+        }
+
+        nav ol li a {
+          display: block;
+          padding: 10px 0;
+          font-size: 15px;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        /* Header: title on top, portraits side by side below */
+        .site-header {
+          flex-wrap: wrap;
+          gap: 16px;
+          padding: 24px 16px;
+        }
+
+        .site-header .header-text {
+          order: -1;
+          flex: 0 0 100%;
+        }
+
+        .site-header .header-text h1 {
+          font-size: 1.4rem;
+        }
+
+        .site-header .portrait {
+          width: 100px;
+          height: 100px;
+        }
+
+        /* Main images */
+        main img {
+          max-width: 92%;
+        }
+
+        /* Profile cards */
+        .profile-card {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .profile-card img {
+          width: 120px;
+          height: 120px;
+        }
+      }
     </style>
   </head>
 
   <body>
     <nav>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
       <ol>
-        <li>
-          <a href="#">
-            <span class="en">Home</span>
-            <span class="ja">ホーム</span>
-          </a>
-        </li>
         <li>
           <a href="#about-us">
             <span class="en">About Us</span>
@@ -508,6 +601,13 @@
       });
 
       setLang(localStorage.getItem("lang") || "ja");
+
+      var navToggle = document.querySelector(".nav-toggle");
+      var nav = document.querySelector("nav");
+      navToggle.addEventListener("click", function () {
+        var open = nav.classList.toggle("nav-open");
+        navToggle.setAttribute("aria-expanded", open);
+      });
     </script>
   </body>
 </html>
